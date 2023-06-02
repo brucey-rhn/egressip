@@ -1,0 +1,39 @@
+---
+apiVersion: k8s.ovn.org/v1
+kind: EgressIP
+metadata:
+   name: foo-egress
+spec:
+  egressIPs:
+  - 10.0.128.240
+  - 10.0.160.240
+  - 10.0.192.240
+  namespaceSelector:
+    matchLabels:
+      env: foo
+---
+apiVersion: k8s.ovn.org/v1
+kind: EgressIP
+metadata:
+   name: bar-egress
+spec:
+  egressIPs:
+  - 10.0.128.241
+  - 10.0.160.241
+  - 10.0.192.241
+  namespaceSelector:
+    matchLabels:
+      env: bar
+---
+apiVersion: k8s.ovn.org/v1
+kind: EgressIP
+metadata:
+   name: baz-egress
+spec:
+  egressIPs:
+  - 10.10.128.241
+  - 10.10.160.241
+  - 10.10.192.241
+  namespaceSelector:
+    matchLabels:
+      env: baz
