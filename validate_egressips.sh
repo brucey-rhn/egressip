@@ -7,7 +7,7 @@
   status_entries=($(oc get egressip $name -o jsonpath='{range .status.items[*]}{.egressIP},{.node}{"\n"}{end}'))
 
   for ip in $(oc get egressip $name -o jsonpath='{range .spec.egressIPs[*]}{@}{"\n"}{end}'); do
-    node=""; eni=""
+    node=""; instance_id=""; eni_id=""
 
     for status_entry in "${status_entries[@]}"; do
       if [[ ${status_entry%,*} == $ip ]]; then
